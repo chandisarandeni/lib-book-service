@@ -66,4 +66,41 @@ public class BookService {
             throw new RuntimeException("Book not found");
         }
     }
+
+    //------ Additional advanced services added here: like searching, filtering, etc. ------
+
+    // Filter books by: genre
+    public List<BookDTO> filterBooksByGenre(String genre) {
+        List<Book> books = bookRepository.findBooksByGenre(genre);
+        if (books.isEmpty()) {
+            throw new RuntimeException("No books found for the specified genre");
+        }
+        return modelMapper.map(books, new TypeToken<List<BookDTO>>() {
+        }.getType());
+    }
+
+    // Filter books by: category
+    public List<BookDTO> filterBooksByCategory(String category) {
+        List<Book> books = bookRepository.findBooksByCategory(category);
+        if (books.isEmpty()) {
+            throw new RuntimeException("No books found for the specified category");
+        }
+        return modelMapper.map(books, new TypeToken<List<BookDTO>>() {
+        }.getType());
+    }
+
+    // Filter books by: popularity (numberOfReaders)
+    // Filter top 10 most popular books
+    public List<BookDTO> filterBooksByPopularity() {
+        List<Book> books = bookRepository.findBooksByPopularity();
+        if (books.isEmpty()) {
+            throw new RuntimeException("No books found");
+        }
+        // Limit to top 10 most popular books
+        List<Book> topBooks = books.stream().limit(10).toList();
+        return modelMapper.map(topBooks, new TypeToken<List<BookDTO>>() {
+        }.getType());
+    }
+
+
 }

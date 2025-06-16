@@ -45,4 +45,24 @@ public class BookController {
     public void deleteBook(@PathVariable("bookId") int bookId) {
         bookService.deleteBook(bookId);
     }
+
+    //------ Additional advanced controllers added here: like searching, filtering, etc. ------
+
+    // Filter books by: genre
+    @GetMapping(path = "/books", params = {"genre"})
+    public List<BookDTO> filterBooksByGenre(@RequestParam("genre") String genre) {
+        return bookService.filterBooksByGenre(genre);
+    }
+
+    // Filter books by: category
+    @GetMapping(path = "/books", params = {"category"})
+    public List<BookDTO> filterBooksByCategory(@RequestParam("category") String category) {
+        return bookService.filterBooksByCategory(category);
+    }
+
+    // Filter books by: popularity (numberOfReaders)
+    @GetMapping(path = "/books/popular")
+    public List<BookDTO> filterBooksByPopularity() {
+        return bookService.filterBooksByPopularity();
+    }
 }
