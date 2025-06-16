@@ -24,4 +24,12 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     // Filter books by: popularity (numberOfReaders)
     @Query("SELECT b FROM Book b ORDER BY b.numberOfReaders DESC")
     List<Book> findBooksByPopularity();
+
+    // Filter trending books (that includes -> most number of readers + most number of viewers )
+    @Query("SELECT b FROM Book b ORDER BY b.numberOfReaders + b.numberOfViewers DESC")
+    List<Book> findTrendingBooks();
+
+    // Filter books by: New Arrived (by -> published date)
+    @Query("SELECT b FROM Book b ORDER BY b.dateOfPublication DESC")
+    List<Book> findNewArrivedBooks();
 }

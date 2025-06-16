@@ -65,4 +65,16 @@ public class BookController {
     public List<BookDTO> filterBooksByPopularity() {
         return bookService.filterBooksByPopularity();
     }
+
+    // Filter trending books
+    @GetMapping(path = "/books/trending")
+    public List<BookDTO> filterTrendingBooks() {
+        return bookService.filterTrendingBooks();
+    }
+
+    // Filter new arrived books
+    @GetMapping(path = "/books/new-arrivals")
+    public List<BookDTO> filterNewArrivedBooks() {
+        return bookService.filterNewArrivedBooks();
+    }
 }

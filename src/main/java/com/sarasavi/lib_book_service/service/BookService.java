@@ -102,5 +102,29 @@ public class BookService {
         }.getType());
     }
 
+    // Filter trending books
+    // include -> most number of readers + most number of viewers
+    public List<BookDTO> filterTrendingBooks() {
+        List<Book> books = bookRepository.findTrendingBooks();
+        if (books.isEmpty()) {
+            throw new RuntimeException("No trending books found");
+        }
+        // Limit to top 5 trending books
+        List<Book> topTrendingBooks = books.stream().limit(5).toList();
+        return modelMapper.map(topTrendingBooks, new TypeToken<List<BookDTO>>() {
+        }.getType());
+    }
+
+    // Filter books: New Arrived (by -> published date)
+    public List<BookDTO> filterNewArrivedBooks() {
+        List<Book> books = bookRepository.findNewArrivedBooks();
+        if (books.isEmpty()) {
+            throw new RuntimeException("No new arrived books found");
+        }
+        // Limit to top 10 new arrived books
+        List<Book> topNewArrivedBooks = books.stream().limit(10).toList();
+        return modelMapper.map(topNewArrivedBooks, new TypeToken<List<BookDTO>>() {
+        }.getType());
+    }
 
 }
