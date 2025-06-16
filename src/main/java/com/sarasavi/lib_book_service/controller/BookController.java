@@ -33,4 +33,10 @@ public class BookController {
     public BookDTO addBook(@RequestBody BookDTO bookDTO) {
         return bookService.addBook(bookDTO);
     }
+
+    // Update an existing book
+    @PutMapping(path = "/books/update/{bookId}")
+    public BookDTO updateBook(@PathVariable("bookId") int bookId, @RequestBody BookDTO bookDTO) {
+        return bookService.updateBook(bookId, bookDTO);
+    }
 }

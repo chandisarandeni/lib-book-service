@@ -38,4 +38,16 @@ public class BookService {
         Book savedBook = bookRepository.save(book);
         return modelMapper.map(savedBook, BookDTO.class);
     }
+
+    // Update an existing book
+    public BookDTO updateBook(int bookId, BookDTO bookDTO) {
+        Book existingBook = bookRepository.findById(bookId)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
+
+        // Ensure ID is not overwritten
+        bookDTO.setBookId(bookId);
+        modelMapper.map(bookDTO, existingBook);
+
+        return modelMapper.map(bookRepository.save(existingBook), BookDTO.class);
+    }
 }
