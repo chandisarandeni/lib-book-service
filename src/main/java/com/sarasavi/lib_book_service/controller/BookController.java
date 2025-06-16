@@ -22,6 +22,12 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
+    // Get book by ID
+    @GetMapping(path = "/books/{bookId}")
+    public BookDTO getBookById(@PathVariable("bookId") int bookId) {
+        return bookService.getBookById(bookId);
+    }
+
     // Add a new book
     @PostMapping(path = "/books/add")
     public BookDTO addBook(@RequestBody BookDTO bookDTO) {

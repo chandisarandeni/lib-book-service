@@ -26,6 +26,12 @@ public class BookService {
         }.getType());
     }
 
+    // Get book by ID
+    public BookDTO getBookById(int bookId) {
+        Book book = bookRepository.findById(bookId).get();
+        return modelMapper.map(book, BookDTO.class);
+    }
+
     // Add a new book
     public BookDTO addBook(BookDTO bookDTO) {
         Book book = modelMapper.map(bookDTO, Book.class);
