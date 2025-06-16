@@ -1,3 +1,9 @@
+// User Guide:
+// ***************************************************************************
+// **** Please make sure to follow the steps below to run the application ****
+// ***************************************************************************
+// Database creation script: CREATE DATABASE lib_book_service_db;
+
 package com.sarasavi.lib_book_service;
 
 import org.modelmapper.ModelMapper;
