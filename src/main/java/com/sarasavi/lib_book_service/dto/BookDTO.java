@@ -8,18 +8,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookDTO {
-    int bookId;
-    String bookName;
-    String author;
-    String publisher;
-    String dateOfPublication;
-    String isbn;
-    String language;
-    String category;
-    String genre;
-    String description;
-    String imageUrl;
-    int quantity;
-    int numberOfViewers;
-    int numberOfReaders;
+    private int bookId;
+    private String bookName;
+    private String author;
+    private String publisher;
+    private String dateOfPublication;
+    private String isbn;
+    private String language;
+    private String category;
+    private String genre;
+    private String description;
+    private String imageUrl;
+    private int quantity;
+    private int numberOfViewers;
+    private int numberOfReaders;
 }

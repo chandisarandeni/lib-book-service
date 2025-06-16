@@ -28,7 +28,8 @@ public class BookService {
 
     // Add a new book
     public BookDTO addBook(BookDTO bookDTO) {
-        bookRepository.save(modelMapper.map(bookDTO, Book.class));
-        return bookDTO;
+        Book book = modelMapper.map(bookDTO, Book.class);
+        Book savedBook = bookRepository.save(book);
+        return modelMapper.map(savedBook, BookDTO.class);
     }
 }
