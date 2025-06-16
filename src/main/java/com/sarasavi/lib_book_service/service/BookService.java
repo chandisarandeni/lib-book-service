@@ -50,4 +50,13 @@ public class BookService {
 
         return modelMapper.map(bookRepository.save(existingBook), BookDTO.class);
     }
+
+    // Delete a book
+    public void deleteBook(int bookId) {
+        if (bookRepository.existsById(bookId)) {
+            bookRepository.deleteById(bookId);
+        } else {
+            throw new RuntimeException("Book not found");
+        }
+    }
 }
