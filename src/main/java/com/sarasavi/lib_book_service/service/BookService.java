@@ -27,8 +27,15 @@ public class BookService {
     }
 
     // Get book by ID
+    // increase by 1: numberOfViewers when this function is called
     public BookDTO getBookById(int bookId) {
-        Book book = bookRepository.findById(bookId).get();
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
+
+        // Increment the number of viewers
+        book.setNumberOfViewers(book.getNumberOfViewers() + 1);
+        bookRepository.save(book);
+
         return modelMapper.map(book, BookDTO.class);
     }
 
