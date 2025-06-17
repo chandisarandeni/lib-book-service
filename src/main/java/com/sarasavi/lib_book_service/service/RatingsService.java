@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @Service
 public class RatingsService {
@@ -24,6 +25,22 @@ public class RatingsService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    //get all ratings
+    public List<RatingsDTO> getAllRatings() {
+        List<Ratings> ratingsList = ratingsRepository.findAll();
+        return ratingsList.stream()
+                .map(ratings -> modelMapper.map(ratings, RatingsDTO.class))
+                .toList();
+    }
+
+    // get ratings by: member id
+    public List<RatingsDTO> getRatingsByMemberId(int memberId) {
+        List<Ratings> ratingsList = ratingsRepository.findRatingsByMemberId(memberId);
+        return ratingsList.stream()
+                .map(ratings -> modelMapper.map(ratings, RatingsDTO.class))
+                .toList();
+    }
 
     // add new rating
     public RatingsDTO addRating(RatingsDTO ratingsDTO) {
@@ -50,6 +67,5 @@ public class RatingsService {
 
         return modelMapper.map(savedRatings, RatingsDTO.class);
     }
-
 
 }

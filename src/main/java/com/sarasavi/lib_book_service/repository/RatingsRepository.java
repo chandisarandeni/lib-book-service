@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface RatingsRepository extends JpaRepository<Ratings, Integer> {
 
@@ -15,10 +17,9 @@ public interface RatingsRepository extends JpaRepository<Ratings, Integer> {
     @Query("SELECT AVG(r.stars) FROM Ratings r WHERE r.bookId = ?1")
     Double findAverageRatingByBookId(int bookId);
 
-    // send average rating to Book Service
-    @Modifying
-    @Transactional
-    @Query("UPDATE Book b SET b.ratings = :avgRating WHERE b.bookId = :bookId")
-    int updateBookRating(@Param("bookId") int bookId, @Param("avgRating") Double avgRating);
+
+    // find ratings by member id
+    @Query("SELECT r FROM Ratings r WHERE r.memberId = ?1")
+    List<Ratings> findRatingsByMemberId(int memberId);
 
 }
