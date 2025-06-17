@@ -59,3 +59,9 @@ public class Book {
     @Column(name = "ratings")
     double ratings;
 }
+
+// Documentation for frontend developers:
+// ----------- quantity: enter actual quantity of the book
+// ----------- numberOfViewers: must be initialized to 0
+// ----------- numberOfReaders: must be initialized to 0
+// ----------- ratings: must be initialized to 0.0
