@@ -56,4 +56,6 @@ public class Book {
     @Column(name = "number_of_readers")
     int numberOfReaders;
 
+    @Column(name = "ratings")
+    String ratings;
 }
