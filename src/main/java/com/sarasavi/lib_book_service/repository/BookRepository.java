@@ -32,4 +32,9 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     // Filter books by: New Arrived (by -> published date)
     @Query("SELECT b FROM Book b ORDER BY b.dateOfPublication DESC")
     List<Book> findNewArrivedBooks();
+
+    // search books by : bookName , author, keyword: that include parts of the book name
+    @Query("SELECT b FROM Book b WHERE b.bookName LIKE %?1% OR b.author LIKE %?1%")
+    List<Book> searchBooks(String keyword);
+
 }

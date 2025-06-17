@@ -77,4 +77,10 @@ public class BookController {
     public List<BookDTO> filterNewArrivedBooks() {
         return bookService.filterNewArrivedBooks();
     }
+
+    // search books by : bookName , author, keyword: that include parts of the book name
+    @GetMapping(path = "/books/search")
+    public List<BookDTO> searchBooks(@RequestParam("keyword") String keyword) {
+        return bookService.searchBooks(keyword);
+    }
 }

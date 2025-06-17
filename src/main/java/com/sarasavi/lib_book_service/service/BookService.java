@@ -127,4 +127,13 @@ public class BookService {
         }.getType());
     }
 
+    // search books by : bookName , author, keyword: that include parts of the book name
+    public List<BookDTO> searchBooks(String keyword) {
+        List<Book> books = bookRepository.searchBooks(keyword);
+        if (books.isEmpty()) {
+            throw new RuntimeException("No books found for the specified keyword");
+        }
+        return modelMapper.map(books, new TypeToken<List<BookDTO>>() {
+        }.getType());
+    }
 }
