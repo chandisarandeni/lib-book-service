@@ -22,5 +22,5 @@ public class BookDTO {
     private int quantity;
     private int numberOfViewers;
     private int numberOfReaders;
-    private String ratings;
+    private double ratings;
 }
