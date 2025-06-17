@@ -136,4 +136,16 @@ public class BookService {
         return modelMapper.map(books, new TypeToken<List<BookDTO>>() {
         }.getType());
     }
+
+    // update book ratings
+    public BookDTO updateBookRatings(int bookId, double avgRating) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
+
+        // Update the book's ratings
+        book.setRatings(avgRating);
+        Book updatedBook = bookRepository.save(book);
+
+        return modelMapper.map(updatedBook, BookDTO.class);
+    }
 }

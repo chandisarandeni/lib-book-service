@@ -83,4 +83,10 @@ public class BookController {
     public List<BookDTO> searchBooks(@RequestParam("keyword") String keyword) {
         return bookService.searchBooks(keyword);
     }
+
+    // update book ratings
+    @PutMapping(path = "/books/{bookId}/ratings")
+    public BookDTO updateBookRatings(@PathVariable("bookId") int bookId, @RequestParam("avgRating") double avgRating) {
+        return bookService.updateBookRatings(bookId, avgRating);
+    }
 }

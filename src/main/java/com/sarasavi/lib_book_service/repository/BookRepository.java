@@ -37,4 +37,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Query("SELECT b FROM Book b WHERE b.bookName LIKE %?1% OR b.author LIKE %?1%")
     List<Book> searchBooks(String keyword);
 
+    // update book ratings
+    @Query("UPDATE Book b SET b.ratings = ?2 WHERE b.bookId = ?1")
+    int updateBookRating(int bookId, Double avgRating);
 }

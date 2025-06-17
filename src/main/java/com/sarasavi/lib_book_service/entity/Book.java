@@ -57,5 +57,5 @@ public class Book {
     int numberOfReaders;
 
     @Column(name = "ratings")
-    String ratings;
+    double ratings;
 }
