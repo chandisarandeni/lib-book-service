@@ -40,4 +40,13 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     // update book ratings
     @Query("UPDATE Book b SET b.ratings = ?2 WHERE b.bookId = ?1")
     int updateBookRating(int bookId, Double avgRating);
+
+    // find the highest rated books of the month
+    @Query("SELECT b FROM Book b " +
+            "WHERE FUNCTION('MONTH', b.ratingsUpdatedBy) = FUNCTION('MONTH', CURRENT_DATE) " +
+            "AND FUNCTION('YEAR', b.ratingsUpdatedBy) = FUNCTION('YEAR', CURRENT_DATE) " +
+            "ORDER BY b.ratings DESC")
+    List<Book> findHighestRatedBooksOfMonth();
+
+
 }

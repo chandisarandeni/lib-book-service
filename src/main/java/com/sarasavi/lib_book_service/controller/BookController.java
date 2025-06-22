@@ -84,6 +84,11 @@ public class BookController {
         return bookService.searchBooks(keyword);
     }
 
+    //  filter the highest rated books of the month
+    @GetMapping(path = "/books/books-of-the-month")
+    public List<BookDTO> filterHighestRatedBooksOfMonth() {
+        return bookService.filterHighestRatedBooksOfMonth();
+    }
 
 
     // ------------------------------ controllers called by Ratings Service ------------------------------

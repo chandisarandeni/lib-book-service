@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -60,7 +62,7 @@ public class Book {
     double ratings;
 
     @Column(name = "ratings_updated_by")
-    String ratingsUpdatedBy;
+    LocalDate ratingsUpdatedBy;
 }
 
 // Documentation for frontend developers:

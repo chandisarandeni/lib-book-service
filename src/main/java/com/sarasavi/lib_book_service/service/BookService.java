@@ -138,6 +138,19 @@ public class BookService {
         }.getType());
     }
 
+    // filter the highest rated books of the month
+    public List<BookDTO> filterHighestRatedBooksOfMonth() {
+        List<Book> books = bookRepository.findHighestRatedBooksOfMonth();
+        if (books.isEmpty()) {
+            throw new RuntimeException("No highest rated books found for the month");
+        }
+        // Limit to top 5 highest rated books
+        List<Book> topRatedBooks = books.stream().limit(5).toList();
+        return modelMapper.map(topRatedBooks, new TypeToken<List<BookDTO>>() {
+        }.getType());
+    }
+
+
     // -------------------------------------------- Services related for other services --------------------------------------------
     // update book ratings
     public BookDTO updateBookRatings(int bookId, double avgRating) {
@@ -146,7 +159,7 @@ public class BookService {
 
         // Update the book's ratings
         book.setRatings(avgRating);
-        book.setRatingsUpdatedBy(LocalDate.now().toString());
+        book.setRatingsUpdatedBy(LocalDate.now());
         Book updatedBook = bookRepository.save(book);
 
         return modelMapper.map(updatedBook, BookDTO.class);
