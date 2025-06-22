@@ -84,6 +84,9 @@ public class BookController {
         return bookService.searchBooks(keyword);
     }
 
+
+
+    // ------------------------------ controllers called by Ratings Service ------------------------------
     // update book ratings
     @PutMapping(path = "/books/{bookId}/ratings")
     public BookDTO updateBookRatings(@PathVariable("bookId") int bookId, @RequestParam("avgRating") double avgRating) {

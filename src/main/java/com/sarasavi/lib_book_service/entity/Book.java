@@ -58,6 +58,9 @@ public class Book {
 
     @Column(name = "ratings")
     double ratings;
+
+    @Column(name = "ratings_updated_by")
+    String ratingsUpdatedBy;
 }
 
 // Documentation for frontend developers:
@@ -65,3 +68,4 @@ public class Book {
 // ----------- numberOfViewers: must be initialized to 0
 // ----------- numberOfReaders: must be initialized to 0
 // ----------- ratings: must be initialized to 0.0
+// ----------- ratingsUpdatedBy: must be current date

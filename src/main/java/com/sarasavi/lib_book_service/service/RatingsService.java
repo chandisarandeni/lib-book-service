@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -55,6 +56,7 @@ public class RatingsService {
         URI uri = UriComponentsBuilder
                 .fromUriString("http://localhost:8080/api/v1/books/{bookId}/ratings")
                 .queryParam("avgRating", avgRating)
+                .queryParam("ratingsUpdatedBy", LocalDate.now().toString())
                 .buildAndExpand(savedRatings.getBookId())
                 .toUri();
 

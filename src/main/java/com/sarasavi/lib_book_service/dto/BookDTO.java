@@ -23,4 +23,5 @@ public class BookDTO {
     private int numberOfViewers;
     private int numberOfReaders;
     private double ratings;
+    private String ratingsUpdatedBy;
 }

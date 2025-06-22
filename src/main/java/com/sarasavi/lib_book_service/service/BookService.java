@@ -8,6 +8,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -137,6 +138,7 @@ public class BookService {
         }.getType());
     }
 
+    // -------------------------------------------- Services related for other services --------------------------------------------
     // update book ratings
     public BookDTO updateBookRatings(int bookId, double avgRating) {
         Book book = bookRepository.findById(bookId)
@@ -144,6 +146,7 @@ public class BookService {
 
         // Update the book's ratings
         book.setRatings(avgRating);
+        book.setRatingsUpdatedBy(LocalDate.now().toString());
         Book updatedBook = bookRepository.save(book);
 
         return modelMapper.map(updatedBook, BookDTO.class);
