@@ -68,6 +68,13 @@ public class BookService {
         }
     }
 
+    //------ Count related services added here : like counting total books, books by genre, etc. ------
+
+    // Count total number of books
+    public long countTotalBooks() {
+        return bookRepository.count();
+    }
+
     //------ Additional advanced services added here: like searching, filtering, etc. ------
 
     // Filter books by: genre

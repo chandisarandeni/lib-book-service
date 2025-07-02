@@ -46,6 +46,14 @@ public class BookController {
         bookService.deleteBook(bookId);
     }
 
+    //------ Count related controllers added here: like total number of books, etc. ------
+
+    // Count total number of books
+    @GetMapping(path = "/books/count")
+    public long countTotalBooks() {
+        return bookService.countTotalBooks();
+    }
+
     //------ Additional advanced controllers added here: like searching, filtering, etc. ------
 
     // Filter books by: genre
