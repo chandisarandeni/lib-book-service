@@ -63,6 +63,9 @@ public class Book {
 
     @Column(name = "ratings_updated_by")
     LocalDate ratingsUpdatedBy;
+
+    @Column(name = "available_status")
+    String availabilityStatus;
 }
 
 // Documentation for frontend developers:
