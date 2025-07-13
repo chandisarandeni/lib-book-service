@@ -28,19 +28,19 @@ public class BookController {
     }
 
     // Add a new book
-    @PostMapping(path = "/books/add")
+    @PostMapping(path = "/books")
     public BookDTO addBook(@RequestBody BookDTO bookDTO) {
         return bookService.addBook(bookDTO);
     }
 
     // Update an existing book
-    @PutMapping(path = "/books/update/{bookId}")
+    @PutMapping(path = "/books/{bookId}")
     public BookDTO updateBook(@PathVariable("bookId") int bookId, @RequestBody BookDTO bookDTO) {
         return bookService.updateBook(bookId, bookDTO);
     }
 
     // Delete a book
-    @DeleteMapping(path = "/books/delete/{bookId}")
+    @DeleteMapping(path = "/books/{bookId}")
     public void deleteBook(@PathVariable("bookId") int bookId) {
         bookService.deleteBook(bookId);
     }
